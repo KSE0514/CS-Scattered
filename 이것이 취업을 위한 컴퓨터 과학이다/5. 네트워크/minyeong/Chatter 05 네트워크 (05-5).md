@@ -95,9 +95,9 @@ IP 주소 : 네트워크 상의 호스트를 식별하기 위해 기본적으로
 - **DNS 자원 레코드(DNS resource record)** : 도메인 네임 관련 설정 정보
     - 이름(Record Name), 대응되는 값(Value), 레코드 타입(Record Type, 이름-값 쌍의 유형), TTL, Routing policy
         
-        ![image.png](attachment:219a5f5d-1d2b-407d-a12f-f5f4084dcc8a:image.png)
+        ![image.png](DNS자원레코드1.png)
         
-        ![레코드 유형에 따라 이름-값에 입력해야 할 내용 달라짐](attachment:dad72e38-cefb-40e8-82f0-f64714e58c54:image.png)
+        ![레코드 유형에 따라 이름-값에 입력해야 할 내용 달라짐](DNS자원레코드2.png)
         
         레코드 유형에 따라 이름-값에 입력해야 할 내용 달라짐
         
@@ -114,7 +114,7 @@ IP 주소 : 네트워크 상의 호스트를 식별하기 위해 기본적으로
 
 **URL의 구조**
 
-![image.png](attachment:5107bdbf-5fa6-45a8-b842-422e4e5f21bb:image.png)
+![image.png](URL구조.png)
 
 **① scheme**
 
@@ -163,9 +163,9 @@ IP 주소 : 네트워크 상의 호스트를 식별하기 위해 기본적으로
         - `별표 문자(*)` : 여러 미디어 타입을 통칭하기 위해 사용
         - `타입/서브타입:매개변수= 값` : 부가 설명을 위해 선택적으로 매개변수 포함
         
-        ![image.png](attachment:f37cd2e3-6ae9-4e4c-9990-57289076eca1:image.png)
+        ![image.png](미디어타입1.png)
         
-        ![image.png](attachment:93b91d81-f79b-473c-a445-b5c416e8771a:image.png)
+        ![image.png](미디어타입2.png)
         
 
 **③ 스테이트리스(stateless) 프로토콜**
@@ -187,36 +187,33 @@ IP 주소 : 네트워크 상의 호스트를 식별하기 위해 기본적으로
     - **↔ 비지속 연결** : 요청-응답 메시지를 주고받을 때마다 매번 TCP 연결 수립-종료를 반복하는 방식 (HTTP 1.0 이하)
     - 비지속 연결보다 빠른 속도로 여러 HTTP의 요청과 응답 처리 가능
     
-    ![image.png](attachment:4018f273-2e58-468d-b82b-75fdf85c1d2f:image.png)
+    ![image.png](비지속연결.png)
     
+<details>
+<summary>참고 - HTTP 버전별 특징</summary>
+<div markdown="1">
 
-- **참고 - HTTP 버전별 특징**
-    
-    
-    | HTTP 버전 | TCP 연결 방식 | 연결 방식의 특징 | HTTP 버전의 특징 |
-    | --- | --- | --- | --- |
-    | HTTP/1.0 | 비지속 연결(Non-Persistent Connection) | 요청-응답마다 새로운 TCP 연결을 맺고 종료 (오버헤드 큼) |  |
-    | HTTP/1.1 | 지속 연결(Keep-Alive) | - 하나의 TCP 연결을 유지하며 여러 요청-응답 처리 | - 메시지를 평문으로 송수신
-    - 다양한 편의 기능 추가(콘텐츠 협상 등) |
-    | HTTP/2.0 | 멀티 플렉싱(Multiplexing) | - 여러 개의 독립적인 스트림(요청-응답 메시지 송수신)을 병렬적으로 처리
-    - HTTP 1.1의 HOL 블로킹 문제 완화 (같은 큐에 대기하며 순차적으로 처리되는 여러 패킷이 있을 때, 첫 번째 패킷의 처리 지연으로 인해 나머지 패킷들의 처리도 지연되는 상황) | **-** 바이너리 데이터 기반 송수신
-    - 헤더 압축
-    - 서버 푸시(클라이언트가 요청하지 않았더라도 필요할 것으로 예상되는 자원을 미리 전송하는 기능) |
-    | HTTP/3.0 | QUIC 기반(UDP 사용) | UDP는 TCP에 비해 상대적으로 송수신 속도가 빨라 속도 측면에서 개선 |  |
-    
-    ![HOL 블로킹(Head-Of-Line blocking)](attachment:74085c2a-68ae-4af2-9559-d8f452501d91:image.png)
-    
-    HOL 블로킹(Head-Of-Line blocking)
-    
+| HTTP 버전 | TCP 연결 방식 | 연결 방식의 특징 | HTTP 버전의 특징 |
+| --- | --- | --- | --- |
+| HTTP/1.0 | 비지속 연결(Non-Persistent Connection) | 요청-응답마다 새로운 TCP 연결을 맺고 종료 (오버헤드 큼) |  |
+| HTTP/1.1 | 지속 연결(Keep-Alive) | - 하나의 TCP 연결을 유지하며 여러 요청-응답 처리 | - 메시지를 평문으로 송수신 <br/> - 다양한 편의 기능 추가(콘텐츠 협상 등) |
+| HTTP/2.0 | 멀티 플렉싱(Multiplexing) | - 여러 개의 독립적인 스트림(요청-응답 메시지 송수신)을 병렬적으로 처리 <br/> - HTTP 1.1의 HOL 블로킹 문제 완화 (같은 큐에 대기하며 순차적으로 처리되는 여러 패킷이 있을 때, 첫 번째 패킷의 처리 지연으로 인해 나머지 패킷들의 처리도 지연되는 상황) | - 바이너리 데이터 기반 송수신 <br/> - 헤더 압축 <br/> - 서버 푸시(클라이언트가 요청하지 않았더라도 필요할 것으로 예상되는 자원을 미리 전송하는 기능) |
+| HTTP/3.0 | QUIC 기반(UDP 사용) | UDP는 TCP에 비해 상대적으로 송수신 속도가 빨라 속도 측면에서 개선 |  |
+
+![HOL 블로킹(Head-Of-Line blocking)](HOL블로킹.png)
+
+HOL 블로킹(Head-Of-Line blocking)
+</div>
+</details>
 
 ### HTTP 메시지 구조
-
+![image.png](HTTP메시지구조.png)
 - **시작 라인(start-line)**
     - HTTP 메시지 유형에 따라 요청 라인(요청 메시지), 상태 라인(응답 메시지)
         
-        ![image.png](attachment:9a496ec1-92a3-41c0-8e74-d7d6cd85057a:image.png)
+        ![image.png](시작라인.png)
         
-        ![image.png](attachment:45fe71bd-0934-4e3c-9068-b6c977568e69:image.png)
+        ![image.png](시작라인세부.png)
         
         - 상태 라인 - `HTTP/1.1 200 OK` (요청이 성공적으로 받아들여지고 수행됨), `HTTP/1.1 404 Not Found` (요청한 자원이 존재하지 않음)
 - **필드 라인(field-line)** - HTTP 헤더 명시
