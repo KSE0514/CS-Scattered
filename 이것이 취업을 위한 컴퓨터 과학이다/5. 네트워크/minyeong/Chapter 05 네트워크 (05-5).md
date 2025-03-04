@@ -1,6 +1,6 @@
 # Chapter 05. 네트워크
 - [Chapter 05. 네트워크](#chapter-05-네트워크)
-- [Chapter 05-5. 응용 계층 - HTTP의 기초](#chapter-05-5-응용-계층---http의-기초)
+- [05-5. 응용 계층 - HTTP의 기초](#05-5-응용-계층---http의-기초)
   - [DNS와 URI/URL](#dns와-uriurl)
     - [도메인 네임과 DNS](#도메인-네임과-dns)
     - [자원과 URI/URL](#자원과-uriurl)
@@ -20,7 +20,7 @@
   - [3. 리다이렉션이란 무엇인가요?](#3-리다이렉션이란-무엇인가요)
 
 
-# Chapter 05-5. 응용 계층 - HTTP의 기초
+# 05-5. 응용 계층 - HTTP의 기초
 
 ## DNS와 URI/URL
 
