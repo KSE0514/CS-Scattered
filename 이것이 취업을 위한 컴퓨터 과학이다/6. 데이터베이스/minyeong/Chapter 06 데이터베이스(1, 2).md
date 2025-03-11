@@ -68,10 +68,10 @@
                 |  | INSERT | 테이블에 레코드 삽입 |
                 |  | UPDATE | 테이블의 레코드 갱신 |
                 |  | DELETE | 테이블의 레코드 삭제 |
-                | **DCL** (Data Control Language) | COMMIT | 데이터베이스에 작업 반영 |
+                | **TCL** (Transaction Control Language) | COMMIT | 데이터베이스에 작업 반영 |
                 |  | ROLLBACK | 작업 이전의 상태로 되돌림 |
                 |  | SAVEPOINT | 콜백의 기준점 설정 |
-                | **TCL** (Transaction Control Language) | GRANT | 사용자에게 권한 부여 |
+                | **DCL** (Data Control Language) | GRANT | 사용자에게 권한 부여 |
                 |  | REVOKE | 사용자로부터 권한 회수 |
 
 ## 파일 대신 데이터베이스를 이용하는 이유
