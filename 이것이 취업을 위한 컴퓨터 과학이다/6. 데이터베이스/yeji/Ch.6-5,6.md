@@ -1,3 +1,57 @@
+- [Ch.6-5 데이터베이스 설계](#ch6-5-데이터베이스-설계)
+- [1. ER 다이어그램 (ERD; Entity Relationship Diagram)](#1-er-다이어그램-erd-entity-relationship-diagram)
+  - [ER 다이어그램 (ERD; ER Diagram)](#er-다이어그램-erd-er-diagram)
+  - [표기법 종류](#표기법-종류)
+    - [1️⃣ 피터 첸 표기법 (Peter Chen Diagram)](#1️⃣-피터-첸-표기법-peter-chen-diagram)
+    - [2️⃣ IE 표기법 (Information Engineering Notation) = 새 발/까마귀 발 표기법(Crow Feet Notation)](#2️⃣-ie-표기법-information-engineering-notation--새-발까마귀-발-표기법crow-feet-notation)
+    - [➕ 식별 관계 / 비식별 관계](#-식별-관계--비식별-관계)
+- [2. 정규화 (Normalization)](#2-정규화-normalization)
+    - [\<참고\> 정규화 목적](#참고-정규화-목적)
+  - [2.1 제1 정규형 (1NF: First Normal Form)](#21-제1-정규형-1nf-first-normal-form)
+  - [2.2 제2 정규형 (2NF: Second Normal Form)](#22-제2-정규형-2nf-second-normal-form)
+  - [2.3 제3 정규형 (3NF: Third Normal Form)](#23-제3-정규형-3nf-third-normal-form)
+  - [2.4 보이스/코드 정규형 (BCNF: Boyce–Codd Normal Form)](#24-보이스코드-정규형-bcnf-boycecodd-normal-form)
+  - [\<정리\> 1NF ~ BCNF 테이블 정규화 과정](#정리-1nf--bcnf-테이블-정규화-과정)
+  - [➕ 역정규화: 정규화가 무조건적인 미덕일까](#-역정규화-정규화가-무조건적인-미덕일까)
+    - [정규화 거듭](#정규화-거듭)
+    - [역정규화 (Denormalization)](#역정규화-denormalization)
+- [Ch.6-6 NoSQL](#ch6-6-nosql)
+- [1. RDBMS vs NoSQL: NoSQL의 특징](#1-rdbms-vs-nosql-nosql의-특징)
+    - [NoSQL(Not Only SQL)](#nosqlnot-only-sql)
+  - [NoSQL 데이터베이스 유형](#nosql-데이터베이스-유형)
+    - [1.1 키-값 데이터베이스 (Key-Value Database)](#11-키-값-데이터베이스-key-value-database)
+    - [1.2 도큐먼트 데이터베이스 (Document(-oriented) Database) == 문서지향 데이터베이스](#12-도큐먼트-데이터베이스-document-oriented-database--문서지향-데이터베이스)
+    - [1.3 그래프 데이터베이스 (Graph Database)](#13-그래프-데이터베이스-graph-database)
+    - [1.4 칼럼 패밀리 데이터베이스 (Column Family DB)](#14-칼럼-패밀리-데이터베이스-column-family-db)
+    - [\<정리\> NoSQL](#정리-nosql)
+- [2. 다양한 NoSQL: MongoDB와 Redis 맛보기](#2-다양한-nosql-mongodb와-redis-맛보기)
+  - [2.1 MongoDB](#21-mongodb)
+    - [MongoDB에서 데이터베이스와 컬렉션 생성, 조회, 삭제](#mongodb에서-데이터베이스와-컬렉션-생성-조회-삭제)
+    - [MongoDB에 데이터 삽입](#mongodb에-데이터-삽입)
+      - [1️⃣ 단일 레코드 삽입하는 방법](#1️⃣-단일-레코드-삽입하는-방법)
+      - [특정 컬렉션의 도큐먼트 확인](#특정-컬렉션의-도큐먼트-확인)
+      - [2️⃣ 여러 레코드를 삽입하는 방법](#2️⃣-여러-레코드를-삽입하는-방법)
+    - [MongoDB에서 도큐먼트 갱신](#mongodb에서-도큐먼트-갱신)
+      - [1️⃣ 단일 도큐먼트 갱신하는 방법](#1️⃣-단일-도큐먼트-갱신하는-방법)
+      - [2️⃣ 여러 도큐먼트 갱신하는 방법](#2️⃣-여러-도큐먼트-갱신하는-방법)
+    - [➕ MongoDB의 연산자](#-mongodb의-연산자)
+  - [2.2 Redis](#22-redis)
+    - [문자열 타입 값 다루는 대표적인 명령](#문자열-타입-값-다루는-대표적인-명령)
+    - [리스트 타입 값 다루는 대표적인 명령](#리스트-타입-값-다루는-대표적인-명령)
+- [➕ 데이터베이스 분할과 샤딩](#-데이터베이스-분할과-샤딩)
+  - [데이터베이스 분할 (Database Partitioning)](#데이터베이스-분할-database-partitioning)
+  - [수평 분할 (Horizontal Partitioning)](#수평-분할-horizontal-partitioning)
+    - [언제 사용?](#언제-사용)
+    - [분할 방식](#분할-방식)
+      - [\<참고\> 해시 분할, 키 분할 차이](#참고-해시-분할-키-분할-차이)
+  - [수직 분할 (Vertical Partitioning)](#수직-분할-vertical-partitioning)
+    - [언제 사용?](#언제-사용-1)
+- [Question](#question)
+  - [Q1. ERD란 무엇이며, 왜 데이터베이스 설계에서 중요한가요?](#q1-erd란-무엇이며-왜-데이터베이스-설계에서-중요한가요)
+  - [Q2. 제 1, 2, 3 정규화에 대해 설명하고 각 정규화 단계의 목적은 무엇인가요?](#q2-제-1-2-3-정규화에-대해-설명하고-각-정규화-단계의-목적은-무엇인가요)
+  - [Q3. RDBMS와 NoSQL의 차이점은 무엇이며 각각 어떤 상황에서 사용하는 것이 적합한가요?](#q3-rdbms와-nosql의-차이점은-무엇이며-각각-어떤-상황에서-사용하는-것이-적합한가요)
+
+
 # Ch.6-5 데이터베이스 설계
 
 # 1. ER 다이어그램 (ERD; Entity Relationship Diagram)
@@ -430,19 +484,19 @@
 
 ### 분할 방식
 
-1. 범위 분할 (Range Partitioning): 특정 값의 범위로 나눔 (예: ID 1~1000)
+1. 범위 분할 (Range Partitioning): 특정 값의 범위로 나눔 (예: ID 1~1000)\
   예시: 회원들의 가입 연도를 범위로 정의, 그 범위에 따라 테이블 분할\
   ![alt text](image-72.png)
 
-2. 목록 분할 (List Partitioning): 명시적 목록(리스트) 기준 분할 (예: 지역명, 카테고리 등)
+2. 목록 분할 (List Partitioning): 명시적 목록(리스트) 기준 분할 (예: 지역명, 카테고리 등)\
   예시: 고객 주소 데이터 따라 분할\
   ![alt text](image-73.png)
 
-3. 해시 분할 (Hash Partitioning): 해시 함수로 균등 분배
+3. 해시 분할 (Hash Partitioning): 해시 함수로 균등 분배\
   예시: 학생들의 전공 과목 데이터 따라 분할('major_id'열 기준으로 파티션 4개로 분할)\
   ![alt text](image-74.png)
 
-4. 키 분할 (Key-based Sharding): 키를 기준으로 별도의 테이블로 분할 → 파티션별 레코드가 키를 기준으로 균등하게 분배
+4. 키 분할 (Key-based Sharding): 키를 기준으로 별도의 테이블로 분할 → 파티션별 레코드가 키를 기준으로 균등하게 분배\
   예시: 기본키 'id'를 기준으로 파티셔닝\
   ![alt text](image-75.png)
 
