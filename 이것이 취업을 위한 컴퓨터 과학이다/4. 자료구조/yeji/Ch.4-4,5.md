@@ -317,6 +317,23 @@
     - 예 
       - 리눅스의 CPU 스케쥴러 - CFS 스케쥴러
       - 프로그래밍 언어 내부 구현 - C++의 키-쌍 데이터를 저장하는 맵(map)
+        - 코드 예시
+          ```C++
+          #include <map>
+          #include <string>
+
+          int main() {
+              // map 생성
+              std::map<std::string, int> my_map;
+
+              // 요소 추가
+              my_map["apple"] = 5;
+              my_map["banana"] = 3;
+              my_map["orange"] = 7;
+
+              return 0;
+          }
+          ```
         - 내부 구현
           ```C++
           $ uftrace replay
