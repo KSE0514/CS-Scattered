@@ -1,3 +1,17 @@
+- [Ch4-2. 배열과 연결 리스트](#ch4-2-배열과-연결-리스트)
+  - [1. 배열(Array)](#1-배열array)
+    - [➕ 정적 배열(Static Array)과 동적 배열(Dynamic Array)](#-정적-배열static-array과-동적-배열dynamic-array)
+      - [\<추가\> Python의 동적 배열](#추가-python의-동적-배열)
+  - [2. 연결 리스트(Linked List)](#2-연결-리스트linked-list)
+    - [연결 리스트 종류](#연결-리스트-종류)
+- [Ch4-3. 스택과 큐](#ch4-3-스택과-큐)
+  - [1. 스택(Stack)](#1-스택stack)
+  - [2. 큐(Queue)](#2-큐queue)
+  - [3. 큐의 여러 변형된 형태](#3-큐의-여러-변형된-형태)
+    - [원형 큐(Circular Queue)](#원형-큐circular-queue)
+    - [덱(Deque)](#덱deque)
+    - [우선순위 큐(Priority Queue)](#우선순위-큐priority-queue)
+
 # Ch4-2. 배열과 연결 리스트
 
 ## 1. 배열(Array)
